@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encriptador | Challenge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/styles/style.css">
+</head>
+<nav>
+
+</nav>
+<div class="container">
+    <i><img src="./assets/img/Logo.png" class="logo"></i>
+    <div class="input">
+        <textarea name="message" id="message" placeholder="Ingrese el texto aquí" autofocus></textarea>
+        <div>
+            <div class="info">
+                <i><img src="./assets/icons/exclamation-circle-fill.svg"></i>
+                <p>
+                    Solo letras minúsculas y sin acentos
+                </p>
+            </div>
+            <div class="options">
+                <input class="btn btn_encriptar" type="button" value="Encriptar" onclick="encriptar();">
+                <input class="btn" type="button" value="Desencriptar" onclick="desencriptar();">
+            </div>
+        </div>
+    </div>
+    <div class="output">
+        <div id="expecting">
+            <img src="./assets/img/Muñeco.png">
+            <h3>Ningún mensaje fue encontrado</h3>
+            <p>Ingresa el texto que desees encriptar o desencriptar</p>
+        </div>
+        <p id="secret"></p>
+        <input class="btn btn_copiar" type="button" value="Copiar" onclick="copiar();">
+    </div>
+</div>
+<script src="./assets/scripts/script.js"></script>
+<footer>
+    Creado por Camila Arias 2023
+</footer>
+<body>
+    
+</body>
+</html>
