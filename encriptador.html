@@ -15,16 +15,15 @@
     <i><img src="./assets/img/Logo.png" class="logo"></i>
     <div class="input">
         <textarea name="message" id="message" placeholder="Ingrese el texto aquí" autofocus></textarea>
+        <div class="info">
+            <p>
+                ⚠ No ha ingresado ningún texto
+            </p>
+        </div>
         <div>
-            <div class="info">
-                <i><img src="./assets/icons/exclamation-circle-fill.svg"></i>
-                <p>
-                    Solo letras minúsculas y sin acentos
-                </p>
-            </div>
             <div class="options">
-                <input class="btn btn_encriptar" type="button" value="Encriptar" onclick="encriptar();">
-                <input class="btn" type="button" value="Desencriptar" onclick="desencriptar();">
+                <input class="btn btn_encriptar" type="button" value="Encriptar" id="btn_encriptar">
+                <input class="btn" type="button" value="Desencriptar" id="btn_desencriptar">
             </div>
         </div>
     </div>

@@ -2,22 +2,37 @@ const keys = [["a","ai"],["e","enter"],["i","imes"],["o","ober"],["u","ufat"]];
 const output = document.querySelector(".output")
 const expecting = document.querySelector("#expecting");
 const secret = document.querySelector("#secret");
-const btn_copiar = document.querySelector(".btn_copiar")
-var message = "";
-var messageArr = [];
+const btn_copiar = document.querySelector(".btn_copiar");
+const btn_encriptar = document.querySelector("#btn_encriptar");
+const btn_desencriptar = document.querySelector("#btn_desencriptar");
+const message = document.querySelector("#message");
+const info = document.querySelector(".info")
 
-function mostrar(){
+//Listeners
+btn_encriptar.addEventListener("click",encriptar)
+btn_desencriptar.addEventListener("click",desencriptar)
+
+
+
+function mostrar(my_message){
     output.style.justifyContent = "space-between";
     expecting.style.display = "none";
     secret.style.display = "flex";
     btn_copiar.style.display = "flex";
-    secret.textContent = message;
+    secret.textContent = my_message;
+}
+
+function alerta(){
+    info.style.display = "flex";
+    setTimeout(() => {
+        info.style.display = "none";
+    }, 2000);
 }
 
 function encriptar(){
-    message = document.querySelector("#message").value;
-    if (message != "") {
-        messageArr = message.split("");
+    let messageArr = [];
+    if (message.value != "") {
+        messageArr = message.value.split("");
         for (let key = 0; key < keys.length; key++) {
             for (var i = 0; i < messageArr.length; i++) {
                 if (messageArr[i] == keys[key][0]) {
@@ -25,21 +40,25 @@ function encriptar(){
                 }
             }    
         };
-        message ="";
+        let my_message ="";
         messageArr.forEach(function(letters) {
-            message += letters;
+            my_message += letters;
         });
-        mostrar();
+        mostrar(my_message);
+    }else{
+        alerta();
     }
 }
 
 function desencriptar(){
-    message = document.querySelector("#message").value;
-    if (message != "") {
+    let my_message = message.value;
+    if (message.value != "") {
         for (let key = 0; key < keys.length; key++) {
-            message = message.replace( RegExp(keys[key][1], 'g'),keys[key][0])
+            my_message = my_message.replace( RegExp(keys[key][1], 'g'),keys[key][0])
         };
-        mostrar();
+        mostrar(my_message);
+    }else{
+        alerta();
     }
 }
 
