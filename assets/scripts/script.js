@@ -10,7 +10,7 @@ const btn_copiar = document.querySelector(".btn_copiar");
 const btn_encriptar = document.querySelector("#btn_encriptar");
 const btn_desencriptar = document.querySelector("#btn_desencriptar");
 const message = document.querySelector("#message");
-const info = document.querySelector(".info")
+const alert = document.querySelector(".alert")
 
 // Listeners
 btn_encriptar.addEventListener("click",encriptar)
@@ -30,17 +30,21 @@ function limpiar(my_message){
 function mostrar(my_message){
     output.style.justifyContent = "space-between";
     expecting.style.display = "none";
-    secret.style.display = "flex";
+    secret.style.display = "contents";
     btn_copiar.style.display = "flex";
     secret.textContent = my_message;
 }
 
 // Para mostrar el mensaje de alerta cuando no se ingresa el texto
 function alerta(alerta,color){
-    info.textContent = "⚠" + alerta;
-    info.style = 'display: "flex"; box-shadow: 1px 1px 4px 0px var(--red-alert);';
     setTimeout(() => {
-        info.style.display = "none";
+        alert.style.display = "flex";
+    }, 0);
+    alert.textContent = "⚠  " + alerta;
+    alert.style = `  box-shadow: 1px 1px 4px 0px var(${color});
+                    color: var(${color});`;
+    setTimeout(() => {
+        alert.style.display = "none";
     }, 2000);
 }
 
@@ -62,24 +66,25 @@ function encriptar(){
         });
         mostrar(my_message);
     }else{
-        alerta("hola","rojo");
+        alerta("No ha ingresado texto para encriptar o desencriptar","--red-alert");
     }
 }
 
 // Para desencriptar el mensaje
 function desencriptar(){
     let my_message = limpiar(message.value);
-    if (message.value != "") {
+    if (my_message != "") {
         for (let key = 0; key < keys.length; key++) {
             my_message = my_message.replace( RegExp(keys[key][1], 'g'),keys[key][0])
         };
         mostrar(my_message);
     }else{
-        alerta("hola","rojo");
+        alerta("No ha ingresado texto para encriptar o desencriptar","--red-alert");
     }
 }
 
 
 function copiar(){
     navigator.clipboard.writeText(secret.innerHTML)
+    alerta("Texto copiado al portapapeles","--yellow-warning")
 }
