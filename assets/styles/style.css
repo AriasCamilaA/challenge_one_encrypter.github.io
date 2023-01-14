@@ -59,9 +59,15 @@ body {
 }
 
 .info {
-    display: none;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    height: 50px;
+    display: flex;
     align-items: center;
     margin: 5px;
+    background-color: var(--white);
+    border-radius: 5px;
 }
 
 .info > * {
