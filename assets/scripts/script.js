@@ -10,11 +10,12 @@ const btn_copiar = document.querySelector(".btn_copiar");
 const btn_encriptar = document.querySelector("#btn_encriptar");
 const btn_desencriptar = document.querySelector("#btn_desencriptar");
 const message = document.querySelector("#message");
-const alert = document.querySelector(".alert")
+const alert = document.querySelector(".alert");
 
 // Listeners
-btn_encriptar.addEventListener("click",encriptar)
-btn_desencriptar.addEventListener("click",desencriptar)
+btn_encriptar.addEventListener("click",encriptar);
+btn_desencriptar.addEventListener("click",desencriptar);
+btn_copiar.addEventListener("click",copiar);
 
 // Para quitar tildes y dejar todo el documento en minúsculas
 function limpiar(my_message){
@@ -30,9 +31,14 @@ function limpiar(my_message){
 function mostrar(my_message){
     output.style.justifyContent = "space-between";
     expecting.style.display = "none";
-    secret.style.display = "contents";
+    secret.style.display = "inline";
     btn_copiar.style.display = "flex";
     secret.textContent = my_message;
+}
+function ocultar(){
+    expecting.style.display = "block";
+    secret.style.display = "none";
+    btn_copiar.style.display = "none";
 }
 
 // Para mostrar el mensaje de alerta cuando no se ingresa el texto
@@ -67,6 +73,7 @@ function encriptar(){
         mostrar(my_message);
     }else{
         alerta("No ha ingresado texto para encriptar o desencriptar","--red-alert");
+        ocultar();
     }
 }
 
@@ -80,11 +87,11 @@ function desencriptar(){
         mostrar(my_message);
     }else{
         alerta("No ha ingresado texto para encriptar o desencriptar","--red-alert");
+        ocultar();
     }
 }
 
-
 function copiar(){
-    navigator.clipboard.writeText(secret.innerHTML)
-    alerta("Texto copiado al portapapeles","--yellow-warning")
+    navigator.clipboard.writeText(secret.innerHTML);
+    alerta("Texto copiado al portapapeles","--yellow-warning");
 }
